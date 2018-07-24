@@ -1,0 +1,20 @@
+github "ReactiveX/RxSwift"
+
+github "RxSwiftCommunity/NSObject-Rx"
+github "RxSwiftCommunity/RxSwiftExt"
+github "RxSwiftCommunity/RxOptional"
+github "RxSwiftCommunity/RxRealm"
+github "RxSwiftCommunity/RxDataSources"
+github "RxSwiftCommunity/RxKingfisher"
+github "RxSwiftCommunity/RxAnimated"
+github "RxSwiftCommunity/Action"
+
+github "Quick/Quick"
+github "Quick/Nimble"
+
+github "Moya/Moya"
+github "devxoul/Then"
+github "hackiftekhar/IQKeyboardManager"
+
+github "SwiftyVK/SwiftyVK"
+github "VKCOM/vk-ios-sdk"
