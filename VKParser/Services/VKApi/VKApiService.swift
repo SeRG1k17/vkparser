@@ -13,5 +13,5 @@ import RxSwift
 protocol VKApiService {
     
     var vkApiDelegate: SwiftyVKDelegate { get set }
-    func getWallItems() -> Observable<[WallItem]>
+    func wallItems(for userId: String) -> Observable<[WallItem]>
 }

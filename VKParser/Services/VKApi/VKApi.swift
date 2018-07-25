@@ -13,8 +13,17 @@ import RxSwift
 
 struct VKApi: VKApiService {
     
-    func getWallItems() -> Observable<[WallItem]> {
-        <#code#>
+    func wallItems(for userId: String) -> Observable<[WallItem]> {
+        
+        return Observable.create({ observer -> Disposable in
+            
+            let item = WallItem()
+            item.userId = userId
+            item.title = "Test title"
+            
+            observer.onNext([item])
+            return Disposables.create()
+        })
     }
     
     var vkApiDelegate: SwiftyVKDelegate

@@ -53,7 +53,8 @@ struct ParserViewModel {
 //        }
 //    }(self)
     
-    func onChanged(_ string: String) {
+    func onChanged(_ userId: String) {
         
+        vkApiService.wallItems(for: userId)
     }
 }

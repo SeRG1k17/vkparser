@@ -13,6 +13,7 @@ import RxDataSources
 class WallItem: Object {
     
     @objc dynamic var uid: Int = 0
+    @objc dynamic var userId: String = ""
     @objc dynamic var title: String = ""
     @objc dynamic var added: Date = Date()
     

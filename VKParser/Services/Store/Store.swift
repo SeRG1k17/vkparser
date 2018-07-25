@@ -36,6 +36,10 @@ struct Store: StoreService {
         }
     }
     
+    func save(wallItems: [WallItem]) -> [Observable<WallItem>] {
+        return wallItems.map { self.save(wallItem: $0) }
+    }
+    
     @discardableResult func save(wallItem: WallItem) -> Observable<WallItem> {
         
         let result = withRealm(#function) { realm -> Observable<WallItem> in

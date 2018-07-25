@@ -12,7 +12,9 @@ import RealmSwift
 
 protocol StoreService {
     
-    @discardableResult func save(wallItem: WallItem) -> Observable<WallItem>
-    @discardableResult func delete(wallItem: WallItem) -> Observable<Void>
     var wallItems: Observable<Results<WallItem>> { get }
+    
+    @discardableResult func save(wallItem: WallItem) -> Observable<WallItem>
+    @discardableResult func save(wallItems: [WallItem]) -> [Observable<WallItem>]
+    @discardableResult func delete(wallItem: WallItem) -> Observable<Void>
 }
