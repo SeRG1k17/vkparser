@@ -6,13 +6,13 @@
 //  Copyright © 2018 Sergey Pugach. All rights reserved.
 //
 
-//import Foundation
-//import RxSwift
-//
-//protocol WallService {
-//    
-//    var store: StoreService { get }
-//    var vkApi: VKApiService { get }
-//    
-//    func getWallItems() -> Observable<[WallItem]>
-//}
+import Foundation
+import RxSwift
+
+protocol WallService {
+    
+    var store: StoreService { get }
+    var vkApi: VKApiService { get }
+    
+    func wallItems(for userId: String) -> Observable<[WallItem]>
+}

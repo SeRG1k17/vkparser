@@ -36,6 +36,16 @@ struct Store: StoreService {
         }
     }
     
+    func wallItems(for userId: String) -> Observable<Results<WallItem>> {
+        
+        let result = withRealm(#function) { realm -> Observable<Results<WallItem>> in
+            
+            let items = realm.objects(WallItem.self).filter("userId == %@", userId)
+            return Observable.collection(from: items)
+        }
+        return result ?? .empty()
+    }
+    
     func save(wallItems: [WallItem]) -> [Observable<WallItem>] {
         return wallItems.map { self.save(wallItem: $0) }
     }
@@ -78,14 +88,27 @@ struct Store: StoreService {
     }
     
     private var testItems: [WallItem] {
-        return ["Chapter 5: Filtering operators",
-                "Chapter 4: Observables and Subjects in practice",
-                "Chapter 3: Subjects",
-                "Chapter 2: Observables",
-                "Chapter 1: Hello, RxSwift"].map {
-                    let item = WallItem()
-                    item.title = $0
-                    return item
-        }
+        
+        let item1 = WallItem()
+        item1.title = "Chapter 5: Filtering operators"
+        item1.userId = "1"
+        
+        let item2 = WallItem()
+        item2.title = "Chapter 4: Observables and Subjects in practice"
+        item2.userId = "1"
+        
+        let item3 = WallItem()
+        item3.title = "Chapter 3: Subjects"
+        item3.userId = "1"
+        
+        let item4 = WallItem()
+        item4.title = "Chapter 2: Observables"
+        item4.userId = "3"
+        
+        let item5 = WallItem()
+        item5.title = "Chapter 1: Hello, RxSwift"
+        item5.userId = "3"
+        
+        return [item1, item2, item3, item4, item5]
     }
 }

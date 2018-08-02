@@ -17,4 +17,6 @@ protocol StoreService {
     @discardableResult func save(wallItem: WallItem) -> Observable<WallItem>
     @discardableResult func save(wallItems: [WallItem]) -> [Observable<WallItem>]
     @discardableResult func delete(wallItem: WallItem) -> Observable<Void>
+    
+    func wallItems(for userId: String) -> Observable<Results<WallItem>>
 }

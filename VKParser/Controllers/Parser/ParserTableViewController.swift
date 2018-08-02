@@ -17,6 +17,13 @@ class ParserTableViewController: UITableViewController, BindableType, TableDataS
     typealias ViewModelType = ParserViewModel
     var viewModel: ParserViewModel!
     
+    lazy var activityIndicator: UIActivityIndicatorView! = {
+        
+        let indicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+        tableView.backgroundView = indicator
+        return indicator
+    }()
+    
     lazy var searchBar: UISearchBar = {
         let bar = UISearchBar()
         navigationItem.titleView = bar
@@ -37,38 +44,58 @@ class ParserTableViewController: UITableViewController, BindableType, TableDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view, typically from a nib.
-        
         CellType.registerNib(for: tableView)
         
         setUp(searchBar)
         configure(dataSource)
         
-        //refreshControl.rx.isRefreshi
+        tableView.tableFooterView = UIView()
     }
     
     func bindViewModel() {
-        
+
         searchBar.rx.text
             .orEmpty
+            //.debounce(0.5, scheduler: MainScheduler.instance)
             .throttle(0.5, scheduler: MainScheduler.instance)
             .distinctUntilChanged()
-            .subscribe(onNext: { [weak self] value in
-                self?.viewModel.onChanged(value)
+            .bind(to: viewModel.searchSubject)
+            .disposed(by: rx.disposeBag)
+        
+        
+//        searchBar.rx.text
+//            .orEmpty
+//            .throttle(0.5, scheduler: MainScheduler.instance)
+//            .distinctUntilChanged()
+//            .subscribe(onNext: { [weak self] value in
+//                self?.viewModel.onChanged(value)
+//            })
+//            .disposed(by: rx.disposeBag)
+        
+        let stateObservable = viewModel.state.asObservable().share()
+        
+            stateObservable
+            .subscribe(onNext: { state in
+
+                var items: [WallSection] = []
+                if case let .loaded(loadedItems) = state {
+                    items = loadedItems
+                }
+                
+                Observable.from(optional: items)
+                    .bind(to: self.tableView.rx.items(dataSource: self.dataSource))
+                    .disposed(by: self.rx.disposeBag)
+                
             })
             .disposed(by: rx.disposeBag)
         
-        
-        /*
-        searchBar.rx.text.orEmpty.subscribe(onNext: { value in
-            print(value)
-        })
-        .disposed(by: rx.disposeBag)
- */
-        
-        viewModel.sectionedItems
-            .bind(to: tableView.rx.items(dataSource: dataSource))
+        stateObservable
+            //.skip(1)
+            .map { $0.isLoading }
+            .asDriver(onErrorJustReturn: false)
+            .drive(activityIndicator.rx.isAnimating)
             .disposed(by: rx.disposeBag)
+        
         
         tableView.rx.itemDeleted
             .map { [unowned self] indexPath in
@@ -76,8 +103,6 @@ class ParserTableViewController: UITableViewController, BindableType, TableDataS
             }
             .subscribe(viewModel.deleteAction.inputs)
             .disposed(by: rx.disposeBag)
-        
-        //searchBar.rx.text.orEmpty
     }
     
     func setUp(_ searchBar: UISearchBar) {
