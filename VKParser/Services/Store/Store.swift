@@ -14,12 +14,12 @@ import RealmSwift
 struct Store: StoreService {
     
     var wallItems: Observable<Results<WallItem>> {
-        
+
         let result = withRealm(#function) { realm -> Observable<Results<WallItem>> in
             let items = realm.objects(WallItem.self)
             return Observable.collection(from: items)
         }
-        
+
         return result ?? .empty()
     }
     
@@ -46,8 +46,44 @@ struct Store: StoreService {
         return result ?? .empty()
     }
     
-    func save(wallItems: [WallItem]) -> [Observable<WallItem>] {
-        return wallItems.map { self.save(wallItem: $0) }
+//    func save(items: [WallItem], for userId: String) -> Observable<[Observable<WallItem>]> {
+//
+//        return wallItems(for: userId).map { results in
+//            results.toArray()
+//            }
+//            .map { storedItems in
+//                items.filter { !storedItems.contains($0) }
+//                    .map { self.save(wallItem: $0) }
+//        }
+//    }
+    
+    func save(items: [WallItem], for userId: String) -> Observable<[WallItem]> {
+
+        return wallItems(for: userId).map { results in
+            results.toArray()
+        }
+        .flatMap { storedItems -> Observable<[WallItem]> in
+
+            let newItems = items.filter { !storedItems.contains($0) }
+
+                //.map { self.save(wallItem: $0) }
+
+            let result = self.withRealm(#function) { realm -> Observable<[WallItem]> in
+
+                var index = (realm.objects(WallItem.self).max(ofProperty: "uid") ?? 0) + 1
+                newItems.forEach { item in
+                    item.uid = index
+                    index += 1
+                }
+
+                try realm.write { realm.add(newItems) }
+                return .of(newItems)
+            }
+
+            return result ?? .error(StoreServiceError.saveArray(newItems))
+
+            //return newItems
+        }
     }
     
     @discardableResult func save(wallItem: WallItem) -> Observable<WallItem> {

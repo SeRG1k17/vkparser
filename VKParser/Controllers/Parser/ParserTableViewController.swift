@@ -81,7 +81,6 @@ class ParserTableViewController: UITableViewController, BindableType, TableDataS
                 if case let .loaded(loadedItems) = state {
                     items = loadedItems
                 }
-                
                 Observable.from(optional: items)
                     .bind(to: self.tableView.rx.items(dataSource: self.dataSource))
                     .disposed(by: self.rx.disposeBag)
@@ -91,7 +90,9 @@ class ParserTableViewController: UITableViewController, BindableType, TableDataS
         
         stateObservable
             //.skip(1)
-            .map { $0.isLoading }
+            .map { state in
+                state.isLoading
+            }
             .asDriver(onErrorJustReturn: false)
             .drive(activityIndicator.rx.isAnimating)
             .disposed(by: rx.disposeBag)

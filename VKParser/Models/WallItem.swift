@@ -20,6 +20,13 @@ class WallItem: Object {
     override class func primaryKey() -> String? {
         return "uid"
     }
+    
+    override func isEqual(_ object: Any?) -> Bool {
+        
+        guard let rhs = object as? WallItem else { return false }
+        
+        return userId == rhs.userId && title == rhs.title
+    }
 }
 
 extension WallItem: IdentifiableType {

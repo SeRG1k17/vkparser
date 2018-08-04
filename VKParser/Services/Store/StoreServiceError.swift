@@ -11,5 +11,6 @@ import Foundation
 enum StoreServiceError: Error {
     
     case save(WallItem)
+    case saveArray([WallItem])
     case delete(WallItem)
 }
