@@ -16,6 +16,14 @@ class VKApiDelegate: SwiftyVKDelegate {
     
     init() {
         VK.setUp(appId: appId, delegate: self)
+        
+//        VK.sessions.default.logIn(
+//            onSuccess: { info in
+//                print("SwiftyVK: success authorize with", info)
+//        },
+//            onError: { error in
+//                print("SwiftyVK: authorize failed with", error)
+//        })
     }
     
     func vkNeedsScopes(for sessionId: String) -> Scopes {

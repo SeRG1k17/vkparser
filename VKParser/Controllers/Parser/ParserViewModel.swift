@@ -87,7 +87,6 @@ struct ParserViewModel {
                     .map { $0.toArray() }
             }
             .map { ("Network + Store", $0) }
-        
         //
         //            externalObs
         //            .subscribe(onNext: { arrayOfObservables in
@@ -96,7 +95,8 @@ struct ParserViewModel {
         //        .disposed(by: disposeBag)
         
         Observable.merge(storeObs, externalObs)
-                //storeObs
+            //storeObs
+            //externalObs
             .distinctUntilChanged({ old, new -> Bool in
                 old.1 == new.1
             })

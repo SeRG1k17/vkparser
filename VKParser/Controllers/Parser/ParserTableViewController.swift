@@ -142,7 +142,7 @@ class ParserTableViewController: UITableViewController, BindableType, TableDataS
     }
     
     func configureCell(_ cell: CellType, by item: SectionType.Item) {
-        cell.titleLabel.text = item.title
+        cell.textPostLabel.text = item.text
     }
 }
 
