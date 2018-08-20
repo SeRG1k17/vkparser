@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		A51B09B220F8965400D3F39E /* VKSdkFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A534811020F88AA80034390F /* VKSdkFramework.framework */; };
-		A51B09B820F8A1C100D3F39E /* VKApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51B09B720F8A1C100D3F39E /* VKApiService.swift */; };
-		A51B09BA20F8A1D700D3F39E /* VKApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51B09B920F8A1D700D3F39E /* VKApi.swift */; };
-		A51B09BE20F8BCF300D3F39E /* StoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51B09BD20F8BCF300D3F39E /* StoreService.swift */; };
-		A51B09C020F8BD3000D3F39E /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51B09BF20F8BD3000D3F39E /* Store.swift */; };
+		A51B09B820F8A1C100D3F39E /* NetworkWallService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51B09B720F8A1C100D3F39E /* NetworkWallService.swift */; };
+		A51B09BA20F8A1D700D3F39E /* NetworkWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51B09B920F8A1D700D3F39E /* NetworkWall.swift */; };
+		A51B09BE20F8BCF300D3F39E /* LocalWallService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51B09BD20F8BCF300D3F39E /* LocalWallService.swift */; };
+		A51B09C020F8BD3000D3F39E /* LocalWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51B09BF20F8BD3000D3F39E /* LocalWall.swift */; };
 		A51B09C220F8BD7F00D3F39E /* WallItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51B09C120F8BD7F00D3F39E /* WallItem.swift */; };
-		A51B09C420F8C01600D3F39E /* StoreServiceError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51B09C320F8C01600D3F39E /* StoreServiceError.swift */; };
+		A51B09C420F8C01600D3F39E /* RealmClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51B09C320F8C01600D3F39E /* RealmClientError.swift */; };
 		A51B09C720F8C4A000D3F39E /* WallItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51B09C520F8C4A000D3F39E /* WallItemTableViewCell.swift */; };
 		A51B09C820F8C4A000D3F39E /* WallItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51B09C620F8C4A000D3F39E /* WallItemTableViewCell.xib */; };
 		A51B09CB20F8CCF000D3F39E /* TableDataSourceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51B09CA20F8CCF000D3F39E /* TableDataSourceable.swift */; };
@@ -65,17 +65,24 @@
 		A5B241A72100DAE3001E86C4 /* VKApiDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B241A62100DAE3001E86C4 /* VKApiDelegate.swift */; };
 		A5B241AA2100E071001E86C4 /* UIView+Responder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B241A92100E071001E86C4 /* UIView+Responder.swift */; };
 		A5B241AD2100EC81001E86C4 /* SwiftyVK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B241AC2100EC80001E86C4 /* SwiftyVK.framework */; };
-		A5B241B22100F812001E86C4 /* WallService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B241B12100F812001E86C4 /* WallService.swift */; };
-		A5B241B42100F824001E86C4 /* Wall.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B241B32100F824001E86C4 /* Wall.swift */; };
+		BF71F767212836DC005D8185 /* Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF71F766212836DC005D8185 /* Configurator.swift */; };
+		BF71F76921283721005D8185 /* ThirdPartiesConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF71F76821283721005D8185 /* ThirdPartiesConfigurator.swift */; };
+		BF71F76B2128387A005D8185 /* ParserTableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF71F76A2128387A005D8185 /* ParserTableManager.swift */; };
+		BF71F76D212848FB005D8185 /* WallResponseItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF71F76C212848FB005D8185 /* WallResponseItem.swift */; };
+		BF71F7772128D4DD005D8185 /* RealmMigrationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF71F7762128D4DD005D8185 /* RealmMigrationConfigurator.swift */; };
+		BF71F7792128D5A6005D8185 /* RealmClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF71F7782128D5A6005D8185 /* RealmClient.swift */; };
+		BFBBE5882129D3D100377855 /* ApplicationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBBE5872129D3D100377855 /* ApplicationConfigurator.swift */; };
+		BFBBE58A2129D46300377855 /* ServiceLocator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBBE5892129D46300377855 /* ServiceLocator.swift */; };
+		BFBBE58E2129E13400377855 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFBBE58D2129E13300377855 /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A51B09B720F8A1C100D3F39E /* VKApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKApiService.swift; sourceTree = "<group>"; };
-		A51B09B920F8A1D700D3F39E /* VKApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKApi.swift; sourceTree = "<group>"; };
-		A51B09BD20F8BCF300D3F39E /* StoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreService.swift; sourceTree = "<group>"; };
-		A51B09BF20F8BD3000D3F39E /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		A51B09B720F8A1C100D3F39E /* NetworkWallService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkWallService.swift; sourceTree = "<group>"; };
+		A51B09B920F8A1D700D3F39E /* NetworkWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkWall.swift; sourceTree = "<group>"; };
+		A51B09BD20F8BCF300D3F39E /* LocalWallService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalWallService.swift; sourceTree = "<group>"; };
+		A51B09BF20F8BD3000D3F39E /* LocalWall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalWall.swift; sourceTree = "<group>"; };
 		A51B09C120F8BD7F00D3F39E /* WallItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallItem.swift; sourceTree = "<group>"; };
-		A51B09C320F8C01600D3F39E /* StoreServiceError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreServiceError.swift; sourceTree = "<group>"; };
+		A51B09C320F8C01600D3F39E /* RealmClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmClientError.swift; sourceTree = "<group>"; };
 		A51B09C520F8C4A000D3F39E /* WallItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallItemTableViewCell.swift; sourceTree = "<group>"; };
 		A51B09C620F8C4A000D3F39E /* WallItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WallItemTableViewCell.xib; sourceTree = "<group>"; };
 		A51B09CA20F8CCF000D3F39E /* TableDataSourceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSourceable.swift; sourceTree = "<group>"; };
@@ -133,8 +140,15 @@
 		A5B241A62100DAE3001E86C4 /* VKApiDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKApiDelegate.swift; sourceTree = "<group>"; };
 		A5B241A92100E071001E86C4 /* UIView+Responder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Responder.swift"; sourceTree = "<group>"; };
 		A5B241AC2100EC80001E86C4 /* SwiftyVK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyVK.framework; path = Carthage/Build/iOS/SwiftyVK.framework; sourceTree = "<group>"; };
-		A5B241B12100F812001E86C4 /* WallService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallService.swift; sourceTree = "<group>"; };
-		A5B241B32100F824001E86C4 /* Wall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wall.swift; sourceTree = "<group>"; };
+		BF71F766212836DC005D8185 /* Configurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
+		BF71F76821283721005D8185 /* ThirdPartiesConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartiesConfigurator.swift; sourceTree = "<group>"; };
+		BF71F76A2128387A005D8185 /* ParserTableManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserTableManager.swift; sourceTree = "<group>"; };
+		BF71F76C212848FB005D8185 /* WallResponseItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallResponseItem.swift; sourceTree = "<group>"; };
+		BF71F7762128D4DD005D8185 /* RealmMigrationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmMigrationConfigurator.swift; sourceTree = "<group>"; };
+		BF71F7782128D5A6005D8185 /* RealmClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmClient.swift; sourceTree = "<group>"; };
+		BFBBE5872129D3D100377855 /* ApplicationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationConfigurator.swift; sourceTree = "<group>"; };
+		BFBBE5892129D46300377855 /* ServiceLocator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceLocator.swift; sourceTree = "<group>"; };
+		BFBBE58D2129E13300377855 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,39 +186,41 @@
 		A51B09B520F8A19600D3F39E /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				A5B241B02100F802001E86C4 /* WallService */,
-				A51B09BC20F8BCE800D3F39E /* Store */,
-				A51B09B620F8A1A800D3F39E /* VKApi */,
+				A51B09BC20F8BCE800D3F39E /* LocalWall */,
+				A51B09B620F8A1A800D3F39E /* NetworkWall */,
+				BFBBE5892129D46300377855 /* ServiceLocator.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
 		};
-		A51B09B620F8A1A800D3F39E /* VKApi */ = {
+		A51B09B620F8A1A800D3F39E /* NetworkWall */ = {
 			isa = PBXGroup;
 			children = (
-				A51B09B720F8A1C100D3F39E /* VKApiService.swift */,
-				A51B09B920F8A1D700D3F39E /* VKApi.swift */,
+				A51B09B720F8A1C100D3F39E /* NetworkWallService.swift */,
+				A51B09B920F8A1D700D3F39E /* NetworkWall.swift */,
+				BFBBE58C2129D6A700377855 /* Models */,
 				A5B241A62100DAE3001E86C4 /* VKApiDelegate.swift */,
 			);
-			path = VKApi;
+			path = NetworkWall;
 			sourceTree = "<group>";
 		};
 		A51B09BB20F8A32300D3F39E /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BFBBE58D2129E13300377855 /* User.swift */,
 				A51B09C120F8BD7F00D3F39E /* WallItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		A51B09BC20F8BCE800D3F39E /* Store */ = {
+		A51B09BC20F8BCE800D3F39E /* LocalWall */ = {
 			isa = PBXGroup;
 			children = (
-				A51B09BD20F8BCF300D3F39E /* StoreService.swift */,
-				A51B09BF20F8BD3000D3F39E /* Store.swift */,
-				A51B09C320F8C01600D3F39E /* StoreServiceError.swift */,
+				A51B09BD20F8BCF300D3F39E /* LocalWallService.swift */,
+				A51B09BF20F8BD3000D3F39E /* LocalWall.swift */,
+				BFBBE58B2129D54700377855 /* Client */,
 			);
-			path = Store;
+			path = LocalWall;
 			sourceTree = "<group>";
 		};
 		A51B09C920F8C4A400D3F39E /* Cells */ = {
@@ -237,6 +253,7 @@
 		A53480CC20F87C6D0034390F /* VKParser */ = {
 			isa = PBXGroup;
 			children = (
+				BF71F765212836C4005D8185 /* Configurators */,
 				A53480CD20F87C6D0034390F /* AppDelegate.swift */,
 				A51B09BB20F8A32300D3F39E /* Models */,
 				A51B09B520F8A19600D3F39E /* Services */,
@@ -244,7 +261,7 @@
 				A534811220F88AFC0034390F /* Scenes */,
 				A534812720F88F390034390F /* Controllers */,
 				A534812120F88E3D0034390F /* Extensions */,
-				A534814120F891900034390F /* ThirdParty */,
+				A534814120F891900034390F /* ThirdParties */,
 				A534812320F88E590034390F /* Resources */,
 				A534812220F88E510034390F /* SupportingFiles */,
 			);
@@ -343,6 +360,7 @@
 				A53480CF20F87C6D0034390F /* ParserTableViewController.swift */,
 				A534812420F88F110034390F /* ParserViewModel.swift */,
 				A51B09C920F8C4A400D3F39E /* Cells */,
+				BF71F76A2128387A005D8185 /* ParserTableManager.swift */,
 			);
 			path = Parser;
 			sourceTree = "<group>";
@@ -364,12 +382,12 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
-		A534814120F891900034390F /* ThirdParty */ = {
+		A534814120F891900034390F /* ThirdParties */ = {
 			isa = PBXGroup;
 			children = (
 				A534814220F891A40034390F /* Instance */,
 			);
-			path = ThirdParty;
+			path = ThirdParties;
 			sourceTree = "<group>";
 		};
 		A534814220F891A40034390F /* Instance */ = {
@@ -415,13 +433,32 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		A5B241B02100F802001E86C4 /* WallService */ = {
+		BF71F765212836C4005D8185 /* Configurators */ = {
 			isa = PBXGroup;
 			children = (
-				A5B241B12100F812001E86C4 /* WallService.swift */,
-				A5B241B32100F824001E86C4 /* Wall.swift */,
+				BF71F766212836DC005D8185 /* Configurator.swift */,
+				BF71F76821283721005D8185 /* ThirdPartiesConfigurator.swift */,
+				BF71F7762128D4DD005D8185 /* RealmMigrationConfigurator.swift */,
+				BFBBE5872129D3D100377855 /* ApplicationConfigurator.swift */,
 			);
-			path = WallService;
+			path = Configurators;
+			sourceTree = "<group>";
+		};
+		BFBBE58B2129D54700377855 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				A51B09C320F8C01600D3F39E /* RealmClientError.swift */,
+				BF71F7782128D5A6005D8185 /* RealmClient.swift */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
+		BFBBE58C2129D6A700377855 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BF71F76C212848FB005D8185 /* WallResponseItem.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -591,30 +628,37 @@
 			buildActionMask = 2147483647;
 			files = (
 				A534815620F891B80034390F /* UICollectionViewCell+Instance.swift in Sources */,
-				A5B241B22100F812001E86C4 /* WallService.swift in Sources */,
-				A51B09BE20F8BCF300D3F39E /* StoreService.swift in Sources */,
-				A51B09BA20F8A1D700D3F39E /* VKApi.swift in Sources */,
-				A51B09C020F8BD3000D3F39E /* Store.swift in Sources */,
-				A51B09B820F8A1C100D3F39E /* VKApiService.swift in Sources */,
+				BF71F76921283721005D8185 /* ThirdPartiesConfigurator.swift in Sources */,
+				A51B09BE20F8BCF300D3F39E /* LocalWallService.swift in Sources */,
+				A51B09BA20F8A1D700D3F39E /* NetworkWall.swift in Sources */,
+				A51B09C020F8BD3000D3F39E /* LocalWall.swift in Sources */,
+				A51B09B820F8A1C100D3F39E /* NetworkWallService.swift in Sources */,
 				A534811620F88C420034390F /* AppScene.swift in Sources */,
 				A534811E20F88CE40034390F /* SceneTransitionType.swift in Sources */,
 				A534811420F88C190034390F /* Sceneable.swift in Sources */,
 				A534815B20F891B80034390F /* UITableViewCell+Instance.swift in Sources */,
 				A5B241AA2100E071001E86C4 /* UIView+Responder.swift in Sources */,
 				A534815A20F891B80034390F /* UIView+Instance.swift in Sources */,
-				A51B09C420F8C01600D3F39E /* StoreServiceError.swift in Sources */,
+				A51B09C420F8C01600D3F39E /* RealmClientError.swift in Sources */,
 				A51B09CB20F8CCF000D3F39E /* TableDataSourceable.swift in Sources */,
+				BFBBE5882129D3D100377855 /* ApplicationConfigurator.swift in Sources */,
 				A51B09C220F8BD7F00D3F39E /* WallItem.swift in Sources */,
 				A534811920F88C720034390F /* SceneCoordinatorType.swift in Sources */,
 				A534812A20F8903B0034390F /* BindableType.swift in Sources */,
 				A534815820F891B80034390F /* UITableView+Instance.swift in Sources */,
+				BF71F76D212848FB005D8185 /* WallResponseItem.swift in Sources */,
+				BF71F767212836DC005D8185 /* Configurator.swift in Sources */,
 				A5B241A72100DAE3001E86C4 /* VKApiDelegate.swift in Sources */,
 				A534812520F88F110034390F /* ParserViewModel.swift in Sources */,
 				A534815D20F891B80034390F /* Instanceable.swift in Sources */,
-				A5B241B42100F824001E86C4 /* Wall.swift in Sources */,
+				BF71F7792128D5A6005D8185 /* RealmClient.swift in Sources */,
 				A534815420F891B80034390F /* UIStoryboard+Instance.swift in Sources */,
+				BFBBE58E2129E13400377855 /* User.swift in Sources */,
 				A534815920F891B80034390F /* UITableViewHeaderFooterView+Instance.swift in Sources */,
 				A534815520F891B80034390F /* UIViewController+Instance.swift in Sources */,
+				BF71F76B2128387A005D8185 /* ParserTableManager.swift in Sources */,
+				BF71F7772128D4DD005D8185 /* RealmMigrationConfigurator.swift in Sources */,
+				BFBBE58A2129D46300377855 /* ServiceLocator.swift in Sources */,
 				A51B09C720F8C4A000D3F39E /* WallItemTableViewCell.swift in Sources */,
 				A534811B20F88C990034390F /* SceneCoordinator.swift in Sources */,
 				A534812020F88D090034390F /* TransitionError.swift in Sources */,

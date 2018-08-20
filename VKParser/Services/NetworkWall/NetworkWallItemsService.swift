@@ -1,5 +1,5 @@
 //
-//  StoreServiceError.swift
+//  NetworkWallService.swift
 //  VKParser
 //
 //  Created by Sergey on 7/13/18.
@@ -8,9 +8,7 @@
 
 import Foundation
 
-enum StoreServiceError: Error {
+protocol NetworkWallService {
     
-    case save(WallItem)
-    case saveArray([WallItem])
-    case delete(WallItem)
+    func wallItems(for userId: Int)
 }

@@ -23,6 +23,7 @@ enum AppScene: Sceneable {
             
             var vc = ParserTableViewController.instance()
             vc.bind(to: vm)
+            //vm.tableManager = ParserTableManager(tableView: vc.tableView)
             return UINavigationController(rootViewController: vc)
         }
     }

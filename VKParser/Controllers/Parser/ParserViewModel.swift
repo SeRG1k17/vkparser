@@ -8,124 +8,113 @@
 
 import Foundation
 import RxSwift
-import RxDataSources
 import Action
+import RxDataSources
 
 typealias WallSection = AnimatableSectionModel<String, WallItem>
-
-enum State {
-    case empty
-    case loading
-    case error
-    //case loaded
-    case loaded([WallSection])
-    
-    var isLoading: Bool {
-        switch self {
-        case .loading: return true
-        default: return false
-        }
-    }
-}
 
 struct ParserViewModel {
     
     private let sceneCoordinator: SceneCoordinatorType
-    private let vkApiService: VKApiService
-    private let storeService: StoreService
+    private let serviceLocator: ServiceLocator
     
-    let searchSubject = Variable<String>("")
+    var tableManager: ParserTableManager?
+    
+    let searchVariable = Variable<String>("")
     let state = Variable<State>(.empty)
     
     private let disposeBag = DisposeBag()
     
     
-    init(coordinator: SceneCoordinatorType, vkApiService: VKApiService, storeService: StoreService) {
+    init(coordinator: SceneCoordinatorType, serviceLocator: ServiceLocator) {
         
         self.sceneCoordinator = coordinator
-        self.vkApiService = vkApiService
-        self.storeService = storeService
+        self.serviceLocator = serviceLocator
 
         setUpObservables()
     }
 
-    lazy var deleteAction: Action<WallItem, Void> = { (service: StoreService) in
+    lazy var deleteAction: Action<WallItem, Void> = { (service: ServiceLocator) in
         return Action { item in
-            return service.delete(wallItem: item)
+            return service.localWall.delete(wallItem: item)
         }
-    }(self.storeService)
+    }(self.serviceLocator)
+    
+    var sectionedItems: Observable<[WallSection]> {
+        return self.serviceLocator.localWall.wallItems(for: 1).map { items in
+            return [WallSection(model: "Wall", items: items)]
+        }
+    }
+    
+    func delete(item: WallItem) {
+        
+        self.serviceLocator.localWall.delete(wallItem: item)
+//
+//        serviceLocator.networkWall.delete(item: item) { deletedItem in
+//            self.serviceLocator.localWall.delete(wallItem: deletedItem)
+//        }
+    }
     
     private func setUpObservables() {
         
-        let searchObservable = searchSubject.asObservable()
+        let searchObservable = searchVariable.asObservable()
             .do(onNext: { value in
                 self.state.value = value.isEmpty ? .empty : .loading
             })
-            //.filter { !$0.isEmpty }
             .share()
-            
-            
-        let storeObs = searchObservable
-            //.delay(1.0, scheduler: MainScheduler.instance)
-            .flatMap { value in
-                self.storeService.wallItems(for: value).map { $0.toArray() }
-            }
-            .map { items in
-                ("Store", items)
-        }
         
-        let externalObs = searchObservable
-            .delay(2.0, scheduler: MainScheduler.instance)
-            .flatMapLatest { value in
-                self.vkApiService.wallItems(for: value)
-            }
-            .flatMap { items in
-                self.storeService.save(items: items, for: self.searchSubject.value)
-            }
-            .flatMapLatest { _ in
-                self.storeService.wallItems(for: self.searchSubject.value)
-                    .map { $0.toArray() }
-            }
-            .map { ("Network + Store", $0) }
-        //
-        //            externalObs
-        //            .subscribe(onNext: { arrayOfObservables in
-        //                print("saved")
-        //            })
-        //        .disposed(by: disposeBag)
+        searchObservable
+            .filter { !$0.isEmpty }
+            .bind(to: serviceLocator.networkWall.searchSubject)
+            .disposed(by: disposeBag)
         
-        Observable.merge(storeObs, externalObs)
-            //storeObs
-            //externalObs
-            .distinctUntilChanged({ old, new -> Bool in
-                old.1 == new.1
-            })
-            .subscribe(onNext: { tuple in
-                
-                print("Update dataSource by \(tuple.0)")
-                let sections = [WallSection(model: "Wall", items: tuple.1)]
-                
-                self.state.value = .loaded(sections)
+        serviceLocator.networkWall.loadedWallItems
+            .subscribe(onNext: { items in
+                self.serviceLocator.localWall.create(items: items)
             })
             .disposed(by: disposeBag)
-    }
-    
-//    private func onChanged(_ userId: String) {
-//
-//        state.value = .loading
-//
-//        let qw = storeService.wallItems(for: userId)
-//            .delay(3.0, scheduler: MainScheduler.instance)
-//            .map { results in
-//                return [WallSection(model: "Wall", items: results.toArray())]
+        
+        
+        searchObservable
+            .map { Int($0) ?? 0 }
+            .map { self.serviceLocator.localWall.wallItems(for: $0)
+                .map { [WallSection(model: "Wall", items: $0)] }
+            }
+            .map { State.loaded($0) }
+            .bind(to: state)
+            .disposed(by: disposeBag)
+        
+//        return self.serviceLocator.localWall.wallItems(for: 1).map { items in
+//            return [WallSection(model: "Wall", items: items)]
 //            }
-//            .flatMapLatest { sections in
-//                //MERGE HERE
-//                return vkApiService.wallItems(for: userId)
+//            .flatMapLatest { value in
+//                self.serviceLocator.localWall.wallItems(for: value)
 //            }
-//            .subscribe(onNext: { sections in
+//            .map { items
+//            }
+//            .subscribe(onNext: { items in
+//                
+//                let sections = [WallSection(model: "Wall", items: items)]
 //                self.state.value = .loaded(sections)
 //            })
 //            .disposed(by: disposeBag)
-//    }
+    }
+}
+
+extension ParserViewModel {
+    
+    enum State {
+        case empty
+        case loading
+        case error
+        //case loaded
+        case loaded(Observable<[WallSection]>)
+        
+        var isLoading: Bool {
+            switch self {
+            case .loading: return true
+            default: return false
+            }
+        }
+    }
 }

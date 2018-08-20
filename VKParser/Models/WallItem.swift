@@ -12,17 +12,20 @@ import RxDataSources
 
 class WallItem: Object {
     
-    //@objc dynamic var uid: Int = 0
+    @objc dynamic var keyId: Int = 0
     
     @objc dynamic var id: Int = 0
-    @objc dynamic var fromId: String = ""
-    @objc dynamic var ownerId: String = ""
+    @objc dynamic var fromId: Int = 0
+    @objc dynamic var ownerId: Int = 0
+    
+    @objc dynamic var authorName: String = ""
+    @objc dynamic var authorPhoto: String = ""
     
     @objc dynamic var date: Date = Date()
     @objc dynamic var text: String = ""
     
     @objc dynamic var likesCount: Int = 0
-    @objc dynamic var viewsCount: Int = 0
+    var viewsCount = RealmOptional<Int>(0)
     @objc dynamic var repostsCount: Int = 0
     @objc dynamic var commentsCount: Int = 0
     
@@ -31,8 +34,12 @@ class WallItem: Object {
         return #keyPath(ownerId)
     }
     
+    class var sortingKey: String {
+        return #keyPath(date)
+    }
+    
     private class var key: String {
-        return #keyPath(id)
+        return #keyPath(keyId)
     }
     
     override class func primaryKey() -> String? {
@@ -47,17 +54,33 @@ class WallItem: Object {
         id = WallItem.lastId(in: realm) + 1
     }
     
-//    override func isEqual(_ object: Any?) -> Bool {
-//
-//        guard let rhs = object as? WallItem else { return false }
-//
-//        return userId == rhs.userId && title == rhs.title
-//    }
+    override func isEqual(_ object: Any?) -> Bool {
+
+        guard let rhs = object as? WallItem else { return false }
+
+        return fromId == rhs.fromId &&
+            ownerId == rhs.ownerId &&
+            text == rhs.text &&
+            date == rhs.date &&
+            authorName == rhs.authorName &&
+            authorPhoto == rhs.authorPhoto &&
+            likesCount == rhs.likesCount &&
+            repostsCount == rhs.repostsCount &&
+            commentsCount == rhs.commentsCount &&
+            viewsCount.value == rhs.viewsCount.value
+    }
+}
+
+extension WallItem: Comparable {
+    
+    static func < (lhs: WallItem, rhs: WallItem) -> Bool {
+        return lhs.date < rhs.date
+    }
 }
 
 extension WallItem: IdentifiableType {
     
     var identity: Int {
-        return isInvalidated ? 0 : id
+        return isInvalidated ? 0 : keyId
     }
 }

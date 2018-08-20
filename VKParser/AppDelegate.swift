@@ -13,27 +13,35 @@ import SwiftyVK
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var serviceLocator: ServiceLocator!
+    
+    private lazy var configurators: [Configurator] = [
+        ThirdPartiesConfigurator(),
+        RealmMigrationConfigurator(),
+        ApplicationConfigurator()
+    ]
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        let sceneCoordinator = SceneCoordinator(for: window)
-        let vkApi = VKApiDelegate()
-        let api = VKApi(vkApiDelegate: vkApi)
-        
-        let store = Store()
-        let parserVM = ParserViewModel(coordinator: sceneCoordinator, vkApiService: api, storeService: store)
-        
-        sceneCoordinator.transition(to: AppScene.parser(parserVM), type: .root)
+        configurators.forEach { $0.configure() }
         
         return true
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
         let app = options[.sourceApplication] as? String
         VK.handle(url: url, sourceApplication: app)
+        
         return true
+    }
+}
+
+extension AppDelegate {
+    
+    static var currentDelegate: AppDelegate? {
+        return UIApplication.shared.delegate as? AppDelegate
     }
 }
 
