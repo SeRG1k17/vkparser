@@ -20,69 +20,79 @@ class NetworkWall: NSObject, NetworkWallService {
         static let extended = true
     }
     
-    private(set) var searchSubject = PublishSubject<String>()
-    private(set) var loadedWallItems = PublishSubject<[WallItem]>()
-    
     init(delegate: VKApiDelegate) {
         
         self.delegate = delegate
         super.init()
-        
-        registerObservables()
     }
     
-    private func registerObservables() {
+    func wallItems(for userId: String) -> Observable<[WallItem]> {
         
-        searchSubject
-            .subscribe(onNext: wallItems(for:))
-            .disposed(by: rx.disposeBag)
+        return response(.get([.ownerId: userId,
+                        .count: "\(Constant.wallItemsCount)",
+                        .extended: "\(Constant.extended)"]))
+            .map(WallResponseItem.init(by:))
+            .catchErrorJustReturn(WallResponseItem.empty)
+            .map { $0.wallItems }
     }
     
-    private func wallItems(for userId: String) {
+    func delete(item: WallItem) -> Observable<Void> {
         
-        VK.API.Wall.get([.ownerId: userId,
-                         .count: "\(Constant.wallItemsCount)",
-                         .extended: "\(Constant.extended)"])
-            .onSuccess { data in
-                self.processWallItems(by: data)
-            }
-            .send()
+        return response(.delete([.ownerId: String(item.ownerId),
+                                 .postId: String(item.id)]))
+            .filter { self.processAction(by: $0) }
+            .map { _ in }
     }
     
-    private func processWallItems(by data: Data) {
-
-        do {
-            let response = try JSONDecoder.vkDecoder.decode(WallResponseItem.self, from: data)
-            loadedWallItems.onNext(response.wallItems)
+    func edit(item: WallItem, text: String) -> Observable<Void> {
+        
+        return response(.edit([.ownerId: String(item.ownerId),
+                        .postId: String(item.id),
+                        .message: text]))
+            .filter { self.processAction(by: $0) }
+            .map { _ in }
+    }
+    
+    private func response(_ endPoint: VK.API.Wall) -> Observable<Data> {
+        
+        return Observable.create { observer in
             
-        } catch {
-            loadedWallItems.onNext([])
-            print(error)
-        }
+            let task = endPoint
+                .onSuccess {
+                    observer.onNext($0)
+                    observer.onCompleted()
+                }
+                .onError {
+                    print($0)
+                    observer.onError($0)
+                }
+                .send()
+            
+            return Disposables.create {
+                task.cancel()
+            }
+        }.catchErrorJustReturn(Data())
     }
     
-    func delete(item: WallItem, closure: ((WallItem) -> Void)? = nil) {
+    private func processWallItems(by data: Data) throws -> [WallItem] {
         
-        VK.API.Wall.delete([.ownerId: String(item.ownerId),
-                            .postId: String(item.id)])
-            .onSuccess { data in
-                
-                guard
-                    let response = try? JSONDecoder.vkDecoder.decode(DeleteResponse.self, from: data),
-                    response.response == 1
-                    else { return }
-                
-                closure?(item)
+        let response = try JSONDecoder.vkDecoder.decode(WallResponseItem.self, from: data)
+        return response.wallItems
+    }
+    
+    private func processAction(by data: Data) -> Bool {
+        
+        struct ActionResponse: Codable {
+            let response: Int
         }
-        .send()
+        
+        guard let response = try? JSONDecoder.vkDecoder.decode(ActionResponse.self, from: data) else { return false }
+        
+        return response.response == 1
     }
 }
 
-private struct DeleteResponse: Codable {
-    let response: Int
-}
-
-private extension JSONDecoder {
+extension JSONDecoder {
     
     static let vkDecoder: JSONDecoder = {
         let decoder = JSONDecoder()

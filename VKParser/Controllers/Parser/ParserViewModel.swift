@@ -18,9 +18,7 @@ struct ParserViewModel {
     private let sceneCoordinator: SceneCoordinatorType
     private let serviceLocator: ServiceLocator
     
-    var tableManager: ParserTableManager?
-    
-    let searchVariable = Variable<String>("")
+    let searchSubject = PublishSubject<String>()
     let state = Variable<State>(.empty)
     
     private let disposeBag = DisposeBag()
@@ -31,49 +29,43 @@ struct ParserViewModel {
         self.sceneCoordinator = coordinator
         self.serviceLocator = serviceLocator
 
-        setUpObservables()
+        registerObservers()
     }
-
-    lazy var deleteAction: Action<WallItem, Void> = { (service: ServiceLocator) in
+    
+    lazy var deleteAction: Action<WallItem, Void> = { service in
         return Action { item in
-            return service.localWall.delete(wallItem: item)
+            return service.networkWall.delete(item: item)
+                .observeOn(MainScheduler.instance)
+                .do(onNext: { _ in service.localWall.delete(wallItem: item) })
         }
     }(self.serviceLocator)
     
-    var sectionedItems: Observable<[WallSection]> {
-        return self.serviceLocator.localWall.wallItems(for: 1).map { items in
-            return [WallSection(model: "Wall", items: items)]
+    lazy var editAction: Action<WallItem, Void> = { this in
+        return Action { item in
+            
+            let editViewModel = EditPostViewModel(coordinator: this.sceneCoordinator,
+                                                  item: item,
+                                                  doneAction: this.onUpdate(item: item))
+            
+            return this.sceneCoordinator
+                .transition(to: AppScene.editPost(editViewModel), type: .modal)
         }
-    }
+    }(self)
     
-    func delete(item: WallItem) {
+    private func registerObservers() {
         
-        self.serviceLocator.localWall.delete(wallItem: item)
-//
-//        serviceLocator.networkWall.delete(item: item) { deletedItem in
-//            self.serviceLocator.localWall.delete(wallItem: deletedItem)
-//        }
-    }
-    
-    private func setUpObservables() {
-        
-        let searchObservable = searchVariable.asObservable()
-            .do(onNext: { value in
-                self.state.value = value.isEmpty ? .empty : .loading
-            })
+        let searchObservable = searchSubject
+            .do(onNext: { self.state.value = $0.isEmpty ? .empty : .loading })
             .share()
         
         searchObservable
             .filter { !$0.isEmpty }
-            .bind(to: serviceLocator.networkWall.searchSubject)
-            .disposed(by: disposeBag)
-        
-        serviceLocator.networkWall.loadedWallItems
-            .subscribe(onNext: { items in
-                self.serviceLocator.localWall.create(items: items)
-            })
-            .disposed(by: disposeBag)
-        
+            .flatMap { value -> Observable<[WallItem]> in
+                print(value)
+                return self.serviceLocator.networkWall.wallItems(for: value)
+            }
+        .subscribe(onNext: { self.serviceLocator.localWall.create(items: $0) })
+        .disposed(by: disposeBag)
         
         searchObservable
             .map { Int($0) ?? 0 }
@@ -83,21 +75,15 @@ struct ParserViewModel {
             .map { State.loaded($0) }
             .bind(to: state)
             .disposed(by: disposeBag)
+    }
+    
+    private func onUpdate(item: WallItem) -> Action<String, Void> {
         
-//        return self.serviceLocator.localWall.wallItems(for: 1).map { items in
-//            return [WallSection(model: "Wall", items: items)]
-//            }
-//            .flatMapLatest { value in
-//                self.serviceLocator.localWall.wallItems(for: value)
-//            }
-//            .map { items
-//            }
-//            .subscribe(onNext: { items in
-//                
-//                let sections = [WallSection(model: "Wall", items: items)]
-//                self.state.value = .loaded(sections)
-//            })
-//            .disposed(by: disposeBag)
+        return Action { text in
+            return self.serviceLocator.networkWall.edit(item: item, text: text)
+                .observeOn(MainScheduler.instance)
+                .map { _ in self.serviceLocator.localWall.update(wallItem: item, text: text) }
+        }
     }
 }
 
@@ -107,7 +93,6 @@ extension ParserViewModel {
         case empty
         case loading
         case error
-        //case loaded
         case loaded(Observable<[WallSection]>)
         
         var isLoading: Bool {

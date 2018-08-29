@@ -9,7 +9,7 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import NSObject_Rx
+import Action
 
 class WallItemTableViewCell: UITableViewCell {
 
@@ -25,6 +25,8 @@ class WallItemTableViewCell: UITableViewCell {
     @IBOutlet weak var repostCountLabel: UILabel!
     @IBOutlet weak var viewsCountLabel: UILabel!
     @IBOutlet weak var viewsImageView: UIImageView!
+    
+    @IBOutlet weak var editButton: UIButton!
     
     var viewsCountSubject = PublishSubject<String?>()
     

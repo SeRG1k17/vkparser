@@ -9,7 +9,6 @@
 import UIKit
 import RxSwift
 import RxCocoa
-import NSObject_Rx
 import Action
 
 class ParserTableViewController: UITableViewController, BindableType {
@@ -41,12 +40,9 @@ class ParserTableViewController: UITableViewController, BindableType {
     
     func bindViewModel() {
 
-        //searchBar.rx.text
         searchBar.rx.value
             .orEmpty
-            //.debounce(0.5, scheduler: MainScheduler.instance)
             .throttle(0.5, scheduler: MainScheduler.instance)
-            //.distinctUntilChanged()
             .bind(to: viewModel.searchVariable)
             .disposed(by: rx.disposeBag)
         
@@ -54,28 +50,31 @@ class ParserTableViewController: UITableViewController, BindableType {
             .asObservable()
             .share()
         
-//        viewModel.sectionedItems
-//            .bind(to: tableView.rx.items(dataSource: tableManager.dataSource))
-//            .disposed(by: rx.disposeBag)
-        
         stateObservable
             .subscribe(onNext: tableManager.setUpDataSource(by:))
             .disposed(by: rx.disposeBag)
         
         stateObservable
-            //.skip(1)
             .map { $0.isLoading }
             .asDriver(onErrorJustReturn: false)
             .drive(activityIndicator.rx.isAnimating)
             .disposed(by: rx.disposeBag)
-
+        
+        bind(tableManager)
+    }
+    
+    private func bind(_ tableManager: ParserTableManager) {
+        
         tableManager.itemDeleted
-            .subscribe(onNext: viewModel.delete(item:))
-            //.subscribe(viewModel.deleteAction.inputs)
+            .subscribe(viewModel.deleteAction.inputs)
+            .disposed(by: rx.disposeBag)
+        
+        tableManager.editItem
+            .subscribe(viewModel.editAction.inputs)
             .disposed(by: rx.disposeBag)
     }
     
-    func setUp(_ searchBar: UISearchBar) {
+    private func setUp(_ searchBar: UISearchBar) {
         
         searchBar.tintColor = .black
         searchBar.placeholder = "Search"

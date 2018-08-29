@@ -101,6 +101,11 @@
                         </constraints>
                         <state key="normal" image="repost"/>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zhl-ru-wnV">
+                        <rect key="frame" x="282" y="8" width="30" height="48"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                        <state key="normal" title="···"/>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="trailing" secondItem="dH9-uc-dZN" secondAttribute="trailing" constant="16" id="1Qd-NJ-XGe"/>
@@ -124,6 +129,7 @@
                     <constraint firstItem="0f2-4c-SGP" firstAttribute="leading" secondItem="q3m-Ee-3k1" secondAttribute="trailing" constant="16" id="X0z-6j-WkG"/>
                     <constraint firstItem="fhc-5C-qIX" firstAttribute="leading" secondItem="19X-Ue-bji" secondAttribute="trailing" constant="4" id="Xch-MP-0QO"/>
                     <constraint firstItem="q3m-Ee-3k1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="YnH-HV-0U7"/>
+                    <constraint firstItem="zhl-ru-wnV" firstAttribute="top" secondItem="0f2-4c-SGP" secondAttribute="top" id="ebz-NJ-9ih"/>
                     <constraint firstItem="19X-Ue-bji" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jdf-sK-Qs2" secondAttribute="trailing" constant="4" id="nDD-wb-i70"/>
                     <constraint firstItem="dH9-uc-dZN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="ncS-A2-beb"/>
                     <constraint firstItem="fhc-5C-qIX" firstAttribute="centerY" secondItem="19X-Ue-bji" secondAttribute="centerY" id="pLN-Wh-180"/>
@@ -132,6 +138,7 @@
                     <constraint firstItem="dTT-ga-dWc" firstAttribute="top" secondItem="dH9-uc-dZN" secondAttribute="bottom" constant="16" id="uYb-yu-RGQ"/>
                     <constraint firstItem="19X-Ue-bji" firstAttribute="leading" secondItem="dTT-ga-dWc" secondAttribute="trailing" constant="52" id="ulE-Di-IPc"/>
                     <constraint firstAttribute="trailing" secondItem="4Pa-5G-Byn" secondAttribute="trailing" constant="8" id="vLY-Ji-92C"/>
+                    <constraint firstItem="zhl-ru-wnV" firstAttribute="trailing" secondItem="4Pa-5G-Byn" secondAttribute="trailing" id="xpQ-tr-uU8"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -141,6 +148,7 @@
                 <outlet property="commentButton" destination="dTT-ga-dWc" id="V2H-9O-shP"/>
                 <outlet property="commentCountLabel" destination="jdf-sK-Qs2" id="mn9-vt-71T"/>
                 <outlet property="dateLabel" destination="0w6-gE-N32" id="dDd-I1-BDK"/>
+                <outlet property="editButton" destination="zhl-ru-wnV" id="01Z-Qf-M7r"/>
                 <outlet property="likeButton" destination="5Xa-bB-DIu" id="Kgg-fA-zYG"/>
                 <outlet property="likeCountLabel" destination="yfk-mQ-iyy" id="cL5-bY-loh"/>
                 <outlet property="repostButton" destination="19X-Ue-bji" id="Jq9-6y-N2e"/>

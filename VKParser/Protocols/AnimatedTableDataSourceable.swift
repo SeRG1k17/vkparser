@@ -1,5 +1,5 @@
 //
-//  TableDataSourceable.swift
+//  AnimatedTableDataSourceable.swift
 //  VKParser
 //
 //  Created by Sergey on 7/13/18.
@@ -10,7 +10,7 @@ import UIKit
 import RxSwift
 import RxDataSources
 
-protocol TableDataSourceable: class {
+protocol AnimatedTableDataSourceable: class {
     
     associatedtype SectionType: AnimatableSectionModelType
     typealias AnimatableTableDataSource = RxTableViewSectionedAnimatedDataSource<SectionType>
@@ -24,7 +24,7 @@ protocol TableDataSourceable: class {
     func configureCell(_ cell: CellType, by item: SectionType.Item)
 }
 
-extension TableDataSourceable {
+extension AnimatedTableDataSourceable {
     
     func dequeue(tableView: UITableView, indexPath: IndexPath, item: SectionType.Item) -> CellType {
         

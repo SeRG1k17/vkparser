@@ -11,8 +11,7 @@ import RxSwift
 
 protocol NetworkWallService {
     
-    var searchSubject: PublishSubject<String> { get }
-    var loadedWallItems: PublishSubject<[WallItem]> { get }
-
-    func delete(item: WallItem, closure: ((WallItem) -> Void)?)
+    func wallItems(for userId: String) -> Observable<[WallItem]>
+    func delete(item: WallItem) -> Observable<Void>
+    func edit(item: WallItem, text: String) -> Observable<Void>
 }

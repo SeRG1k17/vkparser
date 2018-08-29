@@ -28,7 +28,8 @@ class WallItem: Object {
     var viewsCount = RealmOptional<Int>(0)
     @objc dynamic var repostsCount: Int = 0
     @objc dynamic var commentsCount: Int = 0
-    
+    @objc dynamic var canDelete: Bool = false
+    @objc dynamic var canEdit: Bool = false
     
     class var searchKey: String {
         return #keyPath(ownerId)
@@ -67,7 +68,9 @@ class WallItem: Object {
             likesCount == rhs.likesCount &&
             repostsCount == rhs.repostsCount &&
             commentsCount == rhs.commentsCount &&
-            viewsCount.value == rhs.viewsCount.value
+            viewsCount.value == rhs.viewsCount.value &&
+            canDelete == rhs.canDelete &&
+            canEdit == rhs.canEdit
     }
 }
 

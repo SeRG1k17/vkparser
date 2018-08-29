@@ -11,9 +11,9 @@ import RxSwift
 
 protocol LocalWallService {
     
-    //@discardableResult func save(wallItem: WallItem) -> Observable<WallItem>
     @discardableResult func create(items: [WallItem]) -> Observable<[WallItem]>
     @discardableResult func delete(wallItem: WallItem) -> Observable<Void>
-    
+    @discardableResult func delete(wallItems: [WallItem]) -> Observable<Void>
+    @discardableResult func update(wallItem: WallItem, text: String) -> Observable<WallItem>
     func wallItems(for userId: Int) -> Observable<[WallItem]>
 }

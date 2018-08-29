@@ -16,7 +16,7 @@ struct WallResponseItem: Decodable {
         case items, profiles, groups
         
         enum ItemCodingKeys: CodingKey {
-            case id, fromId, ownerId, date, postType, text, postSource, comments, likes, reposts, views
+            case id, fromId, ownerId, date, postType, text, postSource, comments, likes, reposts, views, canDelete, canEdit
             
             enum CountCodingKeys: CodingKey {
                 case count
@@ -26,6 +26,16 @@ struct WallResponseItem: Decodable {
 //        enum ProfileCodingKeys: CodingKey {
 //            case id, firstName, lastName, photo50, photo100, online
 //        }
+    }
+    
+    static let empty = WallResponseItem()
+    
+    init() {
+        wallItems = []
+    }
+    
+    init(by data: Data) throws {
+        self = try JSONDecoder.vkDecoder.decode(WallResponseItem.self, from: data)
     }
     
     init(from decoder: Decoder) throws {
@@ -42,6 +52,18 @@ struct WallResponseItem: Decodable {
             item.id = try itemContainer.decode(Int.self, forKey: .id)
             item.fromId = try itemContainer.decode(Int.self, forKey: .fromId)
             item.ownerId = try itemContainer.decode(Int.self, forKey: .ownerId)
+            
+            var canDelete = false
+            if let _ = try itemContainer.decodeIfPresent(Int.self, forKey: .canDelete) {
+                canDelete = true
+            }
+            item.canDelete = canDelete
+            
+            var canEdit = false
+            if let _ = try itemContainer.decodeIfPresent(Int.self, forKey: .canEdit) {
+                canEdit = true
+            }
+            item.canEdit = canEdit
             
             let dateInterval = try itemContainer.decode(TimeInterval.self, forKey: .date)
             item.date = Date(timeIntervalSince1970: dateInterval)

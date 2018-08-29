@@ -16,4 +16,5 @@ enum RealmClientError<T: Object>: Error {
     case update(T)
     case updateMany([T])
     case delete(T)
+    case deleteMany([T])
 }

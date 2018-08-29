@@ -11,9 +11,13 @@ import UIKit
 enum AppScene: Sceneable {
     
     case parser(ParserViewModel)
+    case editPost(EditPostViewModel)
     
     var scene: String {
-        return "Parser"
+        switch self {
+        case .parser: return "Parser"
+        case .editPost: return "EditPost"
+        }
     }
     
     var viewController: UIViewController {
@@ -24,6 +28,11 @@ enum AppScene: Sceneable {
             var vc = ParserTableViewController.instance()
             vc.bind(to: vm)
             //vm.tableManager = ParserTableManager(tableView: vc.tableView)
+            return UINavigationController(rootViewController: vc)
+            
+        case .editPost(let vm):
+            var vc = EditPostViewController.instance()
+            vc.bind(to: vm)
             return UINavigationController(rootViewController: vc)
         }
     }

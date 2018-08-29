@@ -16,7 +16,7 @@
 		A51B09C420F8C01600D3F39E /* RealmClientError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51B09C320F8C01600D3F39E /* RealmClientError.swift */; };
 		A51B09C720F8C4A000D3F39E /* WallItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51B09C520F8C4A000D3F39E /* WallItemTableViewCell.swift */; };
 		A51B09C820F8C4A000D3F39E /* WallItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A51B09C620F8C4A000D3F39E /* WallItemTableViewCell.xib */; };
-		A51B09CB20F8CCF000D3F39E /* TableDataSourceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51B09CA20F8CCF000D3F39E /* TableDataSourceable.swift */; };
+		A51B09CB20F8CCF000D3F39E /* AnimatedTableDataSourceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51B09CA20F8CCF000D3F39E /* AnimatedTableDataSourceable.swift */; };
 		A53480CE20F87C6D0034390F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53480CD20F87C6D0034390F /* AppDelegate.swift */; };
 		A53480D020F87C6D0034390F /* ParserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53480CF20F87C6D0034390F /* ParserTableViewController.swift */; };
 		A53480D320F87C6D0034390F /* ParserTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A53480D120F87C6D0034390F /* ParserTableViewController.storyboard */; };
@@ -63,8 +63,10 @@
 		A534815C20F891B80034390F /* ResourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534815020F891B80034390F /* ResourceType.swift */; };
 		A534815D20F891B80034390F /* Instanceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534815120F891B80034390F /* Instanceable.swift */; };
 		A5B241A72100DAE3001E86C4 /* VKApiDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B241A62100DAE3001E86C4 /* VKApiDelegate.swift */; };
-		A5B241AA2100E071001E86C4 /* UIView+Responder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B241A92100E071001E86C4 /* UIView+Responder.swift */; };
 		A5B241AD2100EC81001E86C4 /* SwiftyVK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B241AC2100EC80001E86C4 /* SwiftyVK.framework */; };
+		BF4B1F7F21342A4B007DEE7D /* EditPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4B1F7E21342A4B007DEE7D /* EditPostViewModel.swift */; };
+		BF4B1F8121342A83007DEE7D /* EditPostViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF4B1F8021342A83007DEE7D /* EditPostViewController.storyboard */; };
+		BF4B1F8321342F0D007DEE7D /* EditPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4B1F8221342F0D007DEE7D /* EditPostViewController.swift */; };
 		BF71F767212836DC005D8185 /* Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF71F766212836DC005D8185 /* Configurator.swift */; };
 		BF71F76921283721005D8185 /* ThirdPartiesConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF71F76821283721005D8185 /* ThirdPartiesConfigurator.swift */; };
 		BF71F76B2128387A005D8185 /* ParserTableManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF71F76A2128387A005D8185 /* ParserTableManager.swift */; };
@@ -85,7 +87,7 @@
 		A51B09C320F8C01600D3F39E /* RealmClientError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmClientError.swift; sourceTree = "<group>"; };
 		A51B09C520F8C4A000D3F39E /* WallItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WallItemTableViewCell.swift; sourceTree = "<group>"; };
 		A51B09C620F8C4A000D3F39E /* WallItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WallItemTableViewCell.xib; sourceTree = "<group>"; };
-		A51B09CA20F8CCF000D3F39E /* TableDataSourceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSourceable.swift; sourceTree = "<group>"; };
+		A51B09CA20F8CCF000D3F39E /* AnimatedTableDataSourceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedTableDataSourceable.swift; sourceTree = "<group>"; };
 		A53480CA20F87C6D0034390F /* VKParser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKParser.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A53480CD20F87C6D0034390F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A53480CF20F87C6D0034390F /* ParserTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserTableViewController.swift; sourceTree = "<group>"; };
@@ -138,8 +140,10 @@
 		A534815020F891B80034390F /* ResourceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceType.swift; sourceTree = "<group>"; };
 		A534815120F891B80034390F /* Instanceable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instanceable.swift; sourceTree = "<group>"; };
 		A5B241A62100DAE3001E86C4 /* VKApiDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKApiDelegate.swift; sourceTree = "<group>"; };
-		A5B241A92100E071001E86C4 /* UIView+Responder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Responder.swift"; sourceTree = "<group>"; };
 		A5B241AC2100EC80001E86C4 /* SwiftyVK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyVK.framework; path = Carthage/Build/iOS/SwiftyVK.framework; sourceTree = "<group>"; };
+		BF4B1F7E21342A4B007DEE7D /* EditPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostViewModel.swift; sourceTree = "<group>"; };
+		BF4B1F8021342A83007DEE7D /* EditPostViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditPostViewController.storyboard; sourceTree = "<group>"; };
+		BF4B1F8221342F0D007DEE7D /* EditPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostViewController.swift; sourceTree = "<group>"; };
 		BF71F766212836DC005D8185 /* Configurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
 		BF71F76821283721005D8185 /* ThirdPartiesConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdPartiesConfigurator.swift; sourceTree = "<group>"; };
 		BF71F76A2128387A005D8185 /* ParserTableManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserTableManager.swift; sourceTree = "<group>"; };
@@ -218,7 +222,6 @@
 			children = (
 				A51B09BD20F8BCF300D3F39E /* LocalWallService.swift */,
 				A51B09BF20F8BD3000D3F39E /* LocalWall.swift */,
-				BFBBE58B2129D54700377855 /* Client */,
 			);
 			path = LocalWall;
 			sourceTree = "<group>";
@@ -256,11 +259,11 @@
 				BF71F765212836C4005D8185 /* Configurators */,
 				A53480CD20F87C6D0034390F /* AppDelegate.swift */,
 				A51B09BB20F8A32300D3F39E /* Models */,
+				BFBBE58B2129D54700377855 /* Clients */,
 				A51B09B520F8A19600D3F39E /* Services */,
 				A534812820F8902F0034390F /* Protocols */,
 				A534811220F88AFC0034390F /* Scenes */,
 				A534812720F88F390034390F /* Controllers */,
-				A534812120F88E3D0034390F /* Extensions */,
 				A534814120F891900034390F /* ThirdParties */,
 				A534812320F88E590034390F /* Resources */,
 				A534812220F88E510034390F /* SupportingFiles */,
@@ -328,14 +331,6 @@
 			path = Transition;
 			sourceTree = "<group>";
 		};
-		A534812120F88E3D0034390F /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				A5B241A92100E071001E86C4 /* UIView+Responder.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		A534812220F88E510034390F /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +363,7 @@
 		A534812720F88F390034390F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				BF4B1F7D213429F6007DEE7D /* Edit */,
 				A534812620F88F2C0034390F /* Parser */,
 			);
 			path = Controllers;
@@ -377,7 +373,7 @@
 			isa = PBXGroup;
 			children = (
 				A534812920F8903B0034390F /* BindableType.swift */,
-				A51B09CA20F8CCF000D3F39E /* TableDataSourceable.swift */,
+				A51B09CA20F8CCF000D3F39E /* AnimatedTableDataSourceable.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -433,6 +429,16 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		BF4B1F7D213429F6007DEE7D /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				BF4B1F7E21342A4B007DEE7D /* EditPostViewModel.swift */,
+				BF4B1F8221342F0D007DEE7D /* EditPostViewController.swift */,
+				BF4B1F8021342A83007DEE7D /* EditPostViewController.storyboard */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
 		BF71F765212836C4005D8185 /* Configurators */ = {
 			isa = PBXGroup;
 			children = (
@@ -444,13 +450,13 @@
 			path = Configurators;
 			sourceTree = "<group>";
 		};
-		BFBBE58B2129D54700377855 /* Client */ = {
+		BFBBE58B2129D54700377855 /* Clients */ = {
 			isa = PBXGroup;
 			children = (
 				A51B09C320F8C01600D3F39E /* RealmClientError.swift */,
 				BF71F7782128D5A6005D8185 /* RealmClient.swift */,
 			);
-			path = Client;
+			path = Clients;
 			sourceTree = "<group>";
 		};
 		BFBBE58C2129D6A700377855 /* Models */ = {
@@ -523,6 +529,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A534815320F891B80034390F /* README.md in Resources */,
+				BF4B1F8121342A83007DEE7D /* EditPostViewController.storyboard in Resources */,
 				A53480D820F87C6F0034390F /* LaunchScreen.storyboard in Resources */,
 				A53480D520F87C6F0034390F /* Assets.xcassets in Resources */,
 				A51B09C820F8C4A000D3F39E /* WallItemTableViewCell.xib in Resources */,
@@ -637,10 +644,11 @@
 				A534811E20F88CE40034390F /* SceneTransitionType.swift in Sources */,
 				A534811420F88C190034390F /* Sceneable.swift in Sources */,
 				A534815B20F891B80034390F /* UITableViewCell+Instance.swift in Sources */,
-				A5B241AA2100E071001E86C4 /* UIView+Responder.swift in Sources */,
+				BF4B1F8321342F0D007DEE7D /* EditPostViewController.swift in Sources */,
+				BF4B1F7F21342A4B007DEE7D /* EditPostViewModel.swift in Sources */,
 				A534815A20F891B80034390F /* UIView+Instance.swift in Sources */,
 				A51B09C420F8C01600D3F39E /* RealmClientError.swift in Sources */,
-				A51B09CB20F8CCF000D3F39E /* TableDataSourceable.swift in Sources */,
+				A51B09CB20F8CCF000D3F39E /* AnimatedTableDataSourceable.swift in Sources */,
 				BFBBE5882129D3D100377855 /* ApplicationConfigurator.swift in Sources */,
 				A51B09C220F8BD7F00D3F39E /* WallItem.swift in Sources */,
 				A534811920F88C720034390F /* SceneCoordinatorType.swift in Sources */,

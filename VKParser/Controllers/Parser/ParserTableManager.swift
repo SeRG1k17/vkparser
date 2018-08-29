@@ -8,11 +8,11 @@
 
 import UIKit
 import RxSwift
-import NSObject_Rx
 import RxDataSources
 import Kingfisher
+import Action
 
-class ParserTableManager: NSObject, TableDataSourceable {
+class ParserTableManager: AnimatedTableDataSourceable {
 
     typealias SectionType = WallSection
     typealias CellType = WallItemTableViewCell
@@ -23,6 +23,8 @@ class ParserTableManager: NSObject, TableDataSourceable {
         }
     }
     
+    private let disposeBag = DisposeBag()
+    
     lazy var dataSource: AnimatableTableDataSource = {
         return AnimatableTableDataSource(configureCell: { [weak self] source, tableView, indexPath, item -> CellType in
             
@@ -31,17 +33,19 @@ class ParserTableManager: NSObject, TableDataSourceable {
         })
     }()
     
-    init(tableView: UITableView) {
-        
-        defer { self.tableView = tableView }
-        super.init()
-    }
-    
     var itemDeleted: Observable<WallItem> {
         return tableView.rx.itemDeleted
             .map { [unowned self] indexPath in
                 try self.tableView.rx.model(at: indexPath)
         }
+    }
+    
+    let editItem = PublishSubject<WallItem>()
+    
+    
+    init(tableView: UITableView) {
+        
+        defer { self.tableView = tableView }
     }
     
     func setUp(_ tableView: UITableView) {
@@ -54,12 +58,13 @@ class ParserTableManager: NSObject, TableDataSourceable {
     
     func setUpDataSource(by state: ParserViewModel.State) {
         
-        var items: [WallSection] = []
+//        var items: [WallSection] = []
         if case let .loaded(loaded) = state {
             
             loaded
+            .observeOn(MainScheduler.instance)
             .bind(to: tableView.rx.items(dataSource: self.dataSource))
-            .disposed(by: rx.disposeBag)
+            .disposed(by: disposeBag)
         }
         
 //        Observable.from(optional: items)
@@ -68,7 +73,13 @@ class ParserTableManager: NSObject, TableDataSourceable {
     }
     
     func configure(_ dataSource: AnimatableTableDataSource) {
-        dataSource.canEditRowAtIndexPath = { _,_  in true }
+        
+        dataSource.canEditRowAtIndexPath = { source, indexPath in
+            
+            return source.sectionModels[indexPath.section]
+                .items[indexPath.row]
+                .canDelete
+        }
     }
     
     func configureCell(_ cell: CellType, by item: SectionType.Item) {
@@ -85,6 +96,12 @@ class ParserTableManager: NSObject, TableDataSourceable {
         cell.repostCountLabel.text = String(item.repostsCount)
         cell.commentCountLabel.text = String(item.commentsCount)
         cell.viewsCountSubject.onNext(item.viewsCount.value.map { String($0) })
+        
+        cell.editButton.isHidden = !item.canEdit
+        cell.editButton.rx.action = CocoaAction { [weak self] in
+            self?.editItem.onNext(item)
+            return .empty()
+        }
     }
 }
 

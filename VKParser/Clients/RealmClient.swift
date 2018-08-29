@@ -120,6 +120,25 @@ class RealmClient {
         return result ?? .error(RealmClientError.delete(model))
     }
     
+    func delete<T: Object>(models: [T], action: ((Realm, [T]) -> Void)? = nil) -> Observable<Void> {
+        
+        let result = withRealm(#function) { realm -> Observable<Void> in
+            
+            do {
+                try realm.write {
+                    action?(realm, models)
+                    realm.delete(models)
+                }
+            } catch {
+                print(error)
+            }
+            
+            return .empty()
+        }
+        
+        return result ?? .error(RealmClientError.deleteMany(models))
+    }
+    
     private func withRealm<T>(_ operation: String, action: (Realm) throws -> T) -> T? {
         
         do {

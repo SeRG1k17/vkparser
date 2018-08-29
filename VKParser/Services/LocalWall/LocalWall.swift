@@ -8,17 +8,17 @@
 
 import Foundation
 import RxSwift
-import NSObject_Rx
 
-class LocalWall: NSObject, LocalWallService {
+class LocalWall: LocalWallService {
     
     private let client: RealmClient
+    private let disposeBag = DisposeBag()
     
     init(client: RealmClient) {
         
         self.client = client
-        super.init()
     }
+    
     
     func wallItems(for userId: Int) -> Observable<[WallItem]> {
         
@@ -32,20 +32,10 @@ class LocalWall: NSObject, LocalWallService {
     
     @discardableResult func create(items: [WallItem]) -> Observable<[WallItem]> {
         
-        return client.updateMany(models: items, merge: { realm, old, new in
-            
+        return self.client.updateMany(models: items) { realm, old, new in
             old.text = new.text
             return old
-//            
-//            if let old = old {
-//                old.text = new.text
-//                return old
-//                
-//            } else {
-//                new.incrementId(in: realm)
-//                return new
-//            }
-        })
+        }
     }
     
     @discardableResult func save(wallItem: WallItem) -> Observable<WallItem> {
@@ -54,5 +44,15 @@ class LocalWall: NSObject, LocalWallService {
     
     @discardableResult func delete(wallItem: WallItem) -> Observable<Void> {
         return client.delete(model: wallItem)
+    }
+    
+    @discardableResult func delete(wallItems: [WallItem]) -> Observable<Void> {
+        return client.delete(models: wallItems)
+    }
+    
+    @discardableResult func update(wallItem: WallItem, text: String) -> Observable<WallItem> {
+        return client.update(model: wallItem) { _, model in
+            model.text = text
+        }
     }
 }
