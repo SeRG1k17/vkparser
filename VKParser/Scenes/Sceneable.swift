@@ -9,7 +9,7 @@
 import UIKit
 
 protocol Sceneable {
-    
+
     var scene: String { get }
     var viewController: UIViewController { get }
 }

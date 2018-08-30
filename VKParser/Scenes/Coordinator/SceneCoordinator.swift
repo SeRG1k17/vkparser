@@ -9,9 +9,9 @@
 import UIKit
 
 class SceneCoordinator: SceneCoordinatorType {
-    
+
     var window: UIWindow!
     var currentViewController: UIViewController?
-    
+
     required init() {}
 }

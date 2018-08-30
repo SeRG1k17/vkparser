@@ -25,22 +25,22 @@ class WallItemTableViewCell: UITableViewCell {
     @IBOutlet weak var repostCountLabel: UILabel!
     @IBOutlet weak var viewsCountLabel: UILabel!
     @IBOutlet weak var viewsImageView: UIImageView!
-    
+
     @IBOutlet weak var editButton: UIButton!
-    
+
     var viewsCountSubject = PublishSubject<String?>()
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        
+
         let viewsCountDriver = viewsCountSubject
             .asDriver(onErrorJustReturn: nil)
-            
+
             viewsCountDriver
             .drive(viewsCountLabel.rx.text)
             .disposed(by: rx.disposeBag)
-        
+
         viewsCountDriver
             .map { ($0 ?? "").isEmpty }
             .drive(viewsImageView.rx.isHidden)

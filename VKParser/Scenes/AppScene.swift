@@ -9,31 +9,33 @@
 import UIKit
 
 enum AppScene: Sceneable {
-    
+
     case parser(ParserViewModel)
     case editPost(EditPostViewModel)
-    
+
     var scene: String {
         switch self {
         case .parser: return "Parser"
         case .editPost: return "EditPost"
         }
     }
-    
+
     var viewController: UIViewController {
-        
+
+        // swiftlint:disable identifier_name
         switch self {
         case .parser(let vm):
-            
+
             var vc = ParserTableViewController.instance()
             vc.bind(to: vm)
             //vm.tableManager = ParserTableManager(tableView: vc.tableView)
             return UINavigationController(rootViewController: vc)
-            
+
         case .editPost(let vm):
             var vc = EditPostViewController.instance()
             vc.bind(to: vm)
             return UINavigationController(rootViewController: vc)
         }
+        // swiftlint:enable identifier_name
     }
 }

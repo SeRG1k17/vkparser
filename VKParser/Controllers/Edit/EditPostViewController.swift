@@ -13,16 +13,16 @@ class EditPostViewController: UIViewController, BindableType {
     @IBOutlet weak var editTextView: UITextView!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var doneButton: UIBarButtonItem!
-    
+
     typealias ViewModelType = EditPostViewModel
     var viewModel: EditPostViewModel!
-    
+
     func bindViewModel() {
-        
+
         editTextView.text = viewModel.itemText
-        
+
         cancelButton.rx.action = viewModel.onCancel
-        
+
         doneButton.rx.tap
             .withLatestFrom(editTextView.rx.text.orEmpty)
             .subscribe(viewModel.onDone.inputs)

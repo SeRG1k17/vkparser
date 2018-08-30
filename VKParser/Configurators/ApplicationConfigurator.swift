@@ -9,22 +9,19 @@
 import Foundation
 
 class ApplicationConfigurator: Configurator {
-    
-    let appDelegate = AppDelegate.currentDelegate
-    
+
+    weak var appDelegate = AppDelegate.currentDelegate
+
     func configure() {
-        
+
         let serviceLocator = ServiceLocator()
         appDelegate?.serviceLocator = serviceLocator
-        
+
         let sceneCoordinator = SceneCoordinator(for: appDelegate?.window)
         let parserVM = ParserViewModel(coordinator: sceneCoordinator,
                                        serviceLocator: serviceLocator)
-        
-        let scene = AppScene.parser(parserVM)
-        scene.viewController
-        
+
         sceneCoordinator.transition(to: AppScene.parser(parserVM), type: .root)
     }
-    
+
 }

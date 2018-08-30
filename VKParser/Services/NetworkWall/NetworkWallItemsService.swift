@@ -9,6 +9,6 @@
 import Foundation
 
 protocol NetworkWallService {
-    
+
     func wallItems(for userId: Int)
 }

@@ -16,7 +16,9 @@ enum TransitionError: Error {
 }
 
 extension TransitionError: LocalizedError {
-    
+
+    // swiftlint:disable identifier_name
+    // swiftlint:disable line_length
     var errorDescription: String? {
         switch self {
         case .instance: return "Can't get a scene instance"
@@ -25,4 +27,6 @@ extension TransitionError: LocalizedError {
         case .modal(let vc): return "Not a modal, no navigation controller: can't navigate back from \(String(describing: vc))"
         }
     }
+    // swiftlint:enable line_length
+    // swiftlint:enable identifier_name
 }

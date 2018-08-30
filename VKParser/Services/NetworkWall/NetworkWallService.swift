@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 
 protocol NetworkWallService {
-    
+
     func wallItems(for userId: String) -> Observable<[WallItem]>
     func delete(item: WallItem) -> Observable<Void>
     func edit(item: WallItem, text: String) -> Observable<Void>

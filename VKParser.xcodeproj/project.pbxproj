@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A51B09B220F8965400D3F39E /* VKSdkFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A534811020F88AA80034390F /* VKSdkFramework.framework */; };
 		A51B09B820F8A1C100D3F39E /* NetworkWallService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51B09B720F8A1C100D3F39E /* NetworkWallService.swift */; };
 		A51B09BA20F8A1D700D3F39E /* NetworkWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51B09B920F8A1D700D3F39E /* NetworkWall.swift */; };
 		A51B09BE20F8BCF300D3F39E /* LocalWallService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A51B09BD20F8BCF300D3F39E /* LocalWallService.swift */; };
@@ -22,25 +21,6 @@
 		A53480D320F87C6D0034390F /* ParserTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A53480D120F87C6D0034390F /* ParserTableViewController.storyboard */; };
 		A53480D520F87C6F0034390F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A53480D420F87C6F0034390F /* Assets.xcassets */; };
 		A53480D820F87C6F0034390F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A53480D620F87C6F0034390F /* LaunchScreen.storyboard */; };
-		A53480F820F8887F0034390F /* RxMoya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480E220F8887E0034390F /* RxMoya.framework */; };
-		A53480F920F8887F0034390F /* NSObject_Rx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480E320F8887E0034390F /* NSObject_Rx.framework */; };
-		A53480FA20F8887F0034390F /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480E420F8887F0034390F /* Kingfisher.framework */; };
-		A53480FB20F8887F0034390F /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480E520F8887F0034390F /* RxCocoa.framework */; };
-		A53480FC20F8887F0034390F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480E620F8887F0034390F /* Alamofire.framework */; };
-		A53480FD20F8887F0034390F /* Moya.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480E720F8887F0034390F /* Moya.framework */; };
-		A53480FE20F8887F0034390F /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480E820F8887F0034390F /* RealmSwift.framework */; };
-		A53480FF20F8887F0034390F /* RxRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480E920F8887F0034390F /* RxRealm.framework */; };
-		A534810020F8887F0034390F /* Action.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480EA20F8887F0034390F /* Action.framework */; };
-		A534810120F8887F0034390F /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480EB20F8887F0034390F /* RxBlocking.framework */; };
-		A534810220F8887F0034390F /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480EC20F8887F0034390F /* Realm.framework */; };
-		A534810320F8887F0034390F /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480ED20F8887F0034390F /* RxDataSources.framework */; };
-		A534810420F8887F0034390F /* Differentiator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480EE20F8887F0034390F /* Differentiator.framework */; };
-		A534810520F8887F0034390F /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480EF20F8887F0034390F /* RxSwift.framework */; };
-		A534810620F8887F0034390F /* IQKeyboardManagerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480F020F8887F0034390F /* IQKeyboardManagerSwift.framework */; };
-		A534810720F8887F0034390F /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480F120F8887F0034390F /* Result.framework */; };
-		A534810820F8887F0034390F /* RxKingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480F220F8887F0034390F /* RxKingfisher.framework */; };
-		A534810920F8887F0034390F /* RxOptional.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480F320F8887F0034390F /* RxOptional.framework */; };
-		A534810A20F8887F0034390F /* RxSwiftExt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480F420F8887F0034390F /* RxSwiftExt.framework */; };
 		A534810F20F888DA0034390F /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = A534810E20F888DA0034390F /* Cartfile */; };
 		A534811420F88C190034390F /* Sceneable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534811320F88C190034390F /* Sceneable.swift */; };
 		A534811620F88C420034390F /* AppScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534811520F88C420034390F /* AppScene.swift */; };
@@ -63,7 +43,21 @@
 		A534815C20F891B80034390F /* ResourceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534815020F891B80034390F /* ResourceType.swift */; };
 		A534815D20F891B80034390F /* Instanceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A534815120F891B80034390F /* Instanceable.swift */; };
 		A5B241A72100DAE3001E86C4 /* VKApiDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B241A62100DAE3001E86C4 /* VKApiDelegate.swift */; };
-		A5B241AD2100EC81001E86C4 /* SwiftyVK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B241AC2100EC80001E86C4 /* SwiftyVK.framework */; };
+		BF3EFA732137EB3F00705A08 /* Action.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480EA20F8887F0034390F /* Action.framework */; };
+		BF3EFA742137EB3F00705A08 /* Differentiator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480EE20F8887F0034390F /* Differentiator.framework */; };
+		BF3EFA752137EB3F00705A08 /* IQKeyboardManagerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480F020F8887F0034390F /* IQKeyboardManagerSwift.framework */; };
+		BF3EFA762137EB3F00705A08 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480E420F8887F0034390F /* Kingfisher.framework */; };
+		BF3EFA772137EB3F00705A08 /* NSObject_Rx.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480E320F8887E0034390F /* NSObject_Rx.framework */; };
+		BF3EFA782137EB3F00705A08 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480EC20F8887F0034390F /* Realm.framework */; };
+		BF3EFA792137EB3F00705A08 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480E820F8887F0034390F /* RealmSwift.framework */; };
+		BF3EFA7A2137EB3F00705A08 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480EB20F8887F0034390F /* RxBlocking.framework */; };
+		BF3EFA7B2137EB3F00705A08 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480E520F8887F0034390F /* RxCocoa.framework */; };
+		BF3EFA7C2137EB3F00705A08 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480ED20F8887F0034390F /* RxDataSources.framework */; };
+		BF3EFA7D2137EB3F00705A08 /* RxRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480E920F8887F0034390F /* RxRealm.framework */; };
+		BF3EFA7E2137EB3F00705A08 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480EF20F8887F0034390F /* RxSwift.framework */; };
+		BF3EFA7F2137EB3F00705A08 /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480F520F8887F0034390F /* RxTest.framework */; };
+		BF3EFA802137EB3F00705A08 /* SwiftyVK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B241AC2100EC80001E86C4 /* SwiftyVK.framework */; };
+		BF3EFA822137EB3F00705A08 /* IQKeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3EFA812137EB3F00705A08 /* IQKeyboardManager.framework */; };
 		BF4B1F7F21342A4B007DEE7D /* EditPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4B1F7E21342A4B007DEE7D /* EditPostViewModel.swift */; };
 		BF4B1F8121342A83007DEE7D /* EditPostViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF4B1F8021342A83007DEE7D /* EditPostViewController.storyboard */; };
 		BF4B1F8321342F0D007DEE7D /* EditPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4B1F8221342F0D007DEE7D /* EditPostViewController.swift */; };
@@ -141,6 +135,7 @@
 		A534815120F891B80034390F /* Instanceable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Instanceable.swift; sourceTree = "<group>"; };
 		A5B241A62100DAE3001E86C4 /* VKApiDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VKApiDelegate.swift; sourceTree = "<group>"; };
 		A5B241AC2100EC80001E86C4 /* SwiftyVK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyVK.framework; path = Carthage/Build/iOS/SwiftyVK.framework; sourceTree = "<group>"; };
+		BF3EFA812137EB3F00705A08 /* IQKeyboardManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IQKeyboardManager.framework; path = Carthage/Build/iOS/IQKeyboardManager.framework; sourceTree = "<group>"; };
 		BF4B1F7E21342A4B007DEE7D /* EditPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostViewModel.swift; sourceTree = "<group>"; };
 		BF4B1F8021342A83007DEE7D /* EditPostViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditPostViewController.storyboard; sourceTree = "<group>"; };
 		BF4B1F8221342F0D007DEE7D /* EditPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPostViewController.swift; sourceTree = "<group>"; };
@@ -160,27 +155,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5B241AD2100EC81001E86C4 /* SwiftyVK.framework in Frameworks */,
-				A53480F820F8887F0034390F /* RxMoya.framework in Frameworks */,
-				A53480F920F8887F0034390F /* NSObject_Rx.framework in Frameworks */,
-				A53480FA20F8887F0034390F /* Kingfisher.framework in Frameworks */,
-				A53480FB20F8887F0034390F /* RxCocoa.framework in Frameworks */,
-				A53480FC20F8887F0034390F /* Alamofire.framework in Frameworks */,
-				A53480FD20F8887F0034390F /* Moya.framework in Frameworks */,
-				A53480FE20F8887F0034390F /* RealmSwift.framework in Frameworks */,
-				A53480FF20F8887F0034390F /* RxRealm.framework in Frameworks */,
-				A534810020F8887F0034390F /* Action.framework in Frameworks */,
-				A534810120F8887F0034390F /* RxBlocking.framework in Frameworks */,
-				A534810220F8887F0034390F /* Realm.framework in Frameworks */,
-				A51B09B220F8965400D3F39E /* VKSdkFramework.framework in Frameworks */,
-				A534810320F8887F0034390F /* RxDataSources.framework in Frameworks */,
-				A534810420F8887F0034390F /* Differentiator.framework in Frameworks */,
-				A534810520F8887F0034390F /* RxSwift.framework in Frameworks */,
-				A534810620F8887F0034390F /* IQKeyboardManagerSwift.framework in Frameworks */,
-				A534810720F8887F0034390F /* Result.framework in Frameworks */,
-				A534810820F8887F0034390F /* RxKingfisher.framework in Frameworks */,
-				A534810920F8887F0034390F /* RxOptional.framework in Frameworks */,
-				A534810A20F8887F0034390F /* RxSwiftExt.framework in Frameworks */,
+				BF3EFA822137EB3F00705A08 /* IQKeyboardManager.framework in Frameworks */,
+				BF3EFA732137EB3F00705A08 /* Action.framework in Frameworks */,
+				BF3EFA742137EB3F00705A08 /* Differentiator.framework in Frameworks */,
+				BF3EFA752137EB3F00705A08 /* IQKeyboardManagerSwift.framework in Frameworks */,
+				BF3EFA762137EB3F00705A08 /* Kingfisher.framework in Frameworks */,
+				BF3EFA772137EB3F00705A08 /* NSObject_Rx.framework in Frameworks */,
+				BF3EFA782137EB3F00705A08 /* Realm.framework in Frameworks */,
+				BF3EFA792137EB3F00705A08 /* RealmSwift.framework in Frameworks */,
+				BF3EFA7A2137EB3F00705A08 /* RxBlocking.framework in Frameworks */,
+				BF3EFA7B2137EB3F00705A08 /* RxCocoa.framework in Frameworks */,
+				BF3EFA7C2137EB3F00705A08 /* RxDataSources.framework in Frameworks */,
+				BF3EFA7D2137EB3F00705A08 /* RxRealm.framework in Frameworks */,
+				BF3EFA7E2137EB3F00705A08 /* RxSwift.framework in Frameworks */,
+				BF3EFA7F2137EB3F00705A08 /* RxTest.framework in Frameworks */,
+				BF3EFA802137EB3F00705A08 /* SwiftyVK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +263,7 @@
 		A53480DF20F8887E0034390F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BF3EFA812137EB3F00705A08 /* IQKeyboardManager.framework */,
 				A5B241AC2100EC80001E86C4 /* SwiftyVK.framework */,
 				A534811020F88AA80034390F /* VKSdkFramework.framework */,
 				A53480EA20F8887F0034390F /* Action.framework */,
@@ -549,50 +539,38 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Action.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Differentiator.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/IQKeyboardManager.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/IQKeyboardManagerSwift.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Moya.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/NSObject_Rx.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxBlocking.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxDataSources.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxKingfisher.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxMoya.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxOptional.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxRealm.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/RxSwift.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/RxSwiftExt.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RxTest.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyVK.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/VKSdkFramework.framework",
 			);
 			name = Carthage;
 			outputPaths = (
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Action.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Alamofire.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Differentiator.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/IQKeyboardManager.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/IQKeyboardManagerSwift.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Kingfisher.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Moya.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/NSObject_Rx.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Realm.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RealmSwift.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/Result.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxBlocking.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxCocoa.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxDataSources.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxKingfisher.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxMoya.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxOptional.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxRealm.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwift.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxSwiftExt.framework",
+				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/RxTest.framework",
 				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/SwiftyVK.framework",
-				"$(BUILT_PRODUCTS_DIR)/$(FRAMEWORKS_FOLDER_PATH)/VKSdkFramework.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -611,7 +589,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"warning: Carthage outdated dependencies script disabled, check the Run script phase in the Build Phases\"\n# /usr/local/bin/carthage outdated --xcode-warnings";
+			shellScript = "echo \"warning: Carthage outdated dependencies script disabled, check the Run script phase in the Build Phases\"\n#/usr/local/bin/carthage outdated --xcode-warnings";
 		};
 		A534810D20F888B00034390F /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -625,7 +603,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n#swiftlint\necho \"warning: Swiftlint disabled, check the Run script phase in the Build Phases\"\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\n#echo \"warning: Swiftlint disabled, check the Run script phase in the Build Phases\"\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 

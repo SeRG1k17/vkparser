@@ -10,9 +10,9 @@ import Foundation
 import RealmSwift
 
 class RealmMigrationConfigurator: Configurator {
-    
+
     func configure() {
         Realm.Configuration.defaultConfiguration = Realm.Configuration(schemaVersion: 1)
     }
-    
+
 }

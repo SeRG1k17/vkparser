@@ -9,13 +9,13 @@
 import Foundation
 
 public protocol Instanceable {
-    
+
     var name: String { get }
     var bundle: Bundle { get }
 }
 
 public extension Instanceable {
-    
+
     var bundle: Bundle {
         return Bundle.main
     }

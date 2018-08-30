@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 enum RealmClientError<T: Object>: Error {
-    
+
     case create(T)
     case fetch
     case update(T)

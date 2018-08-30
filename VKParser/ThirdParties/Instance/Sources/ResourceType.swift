@@ -9,13 +9,13 @@
 import Foundation
 
 enum ResourceType: String {
-    
+
     case nib = "nib"
     case storyboard = "storyboardc"
 }
 
 func exist(by name: String, in bundle: Bundle?, of type: ResourceType) -> Bool {
-    
+
     let bundle = bundle ?? Bundle.main
     return bundle.path(forResource: name, ofType: type.rawValue) != nil
 }

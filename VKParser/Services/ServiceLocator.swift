@@ -9,17 +9,17 @@
 import Foundation
 
 class ServiceLocator {
-    
+
     let localWall: LocalWallService
     let networkWall: NetworkWallService
-    
+
     init() {
-        
+
         let realmClient = RealmClient()
         localWall = LocalWall(client: realmClient)
-        
+
         let vkDelegate = VKApiDelegate()
         networkWall = NetworkWall(delegate: vkDelegate)
     }
-    
+
 }

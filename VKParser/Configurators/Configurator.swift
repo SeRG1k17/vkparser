@@ -9,6 +9,6 @@
 import Foundation
 
 protocol Configurator {
-    
+
     func configure()
 }
