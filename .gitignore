@@ -28,6 +28,13 @@ xcuserdata/
 *.dSYM.zip
 *.dSYM
 
+## OS X files
+*.DS_Store
+*.DS_Store?
+*.Trashes
+*.Spotlight-V100
+*.swp
+
 ## Playgrounds
 timeline.xctimeline
 playground.xcworkspace
