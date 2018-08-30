@@ -16,7 +16,7 @@ class NetworkWall: NSObject, NetworkWallService {
     private weak var delegate: VKApiDelegate?
 
     struct Constant {
-        static let wallItemsCount = 10
+        static let wallItemsCount = 50
         static let extended = true
     }
 
