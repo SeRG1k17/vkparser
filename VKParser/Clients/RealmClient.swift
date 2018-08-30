@@ -107,11 +107,12 @@ class RealmClient {
                     action?(realm, model)
                     realm.delete(model)
                 }
+                return .empty()
+
             } catch {
                 print(error)
+                return .error(error)
             }
-
-            return .empty()
         }
 
         return result ?? .error(RealmClientError.delete(model))
@@ -126,11 +127,12 @@ class RealmClient {
                     action?(realm, models)
                     realm.delete(models)
                 }
+                return .empty()
+
             } catch {
                 print(error)
+                return .error(error)
             }
-
-            return .empty()
         }
 
         return result ?? .error(RealmClientError.deleteMany(models))

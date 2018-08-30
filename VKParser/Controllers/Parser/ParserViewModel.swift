@@ -59,10 +59,7 @@ struct ParserViewModel {
 
         searchObservable
             .filter { !$0.isEmpty }
-            .flatMap { value -> Observable<[WallItem]> in
-                print(value)
-                return self.serviceLocator.networkWall.wallItems(for: value)
-            }
+            .flatMap { self.serviceLocator.networkWall.wallItems(for: $0) }
         .subscribe(onNext: { self.serviceLocator.localWall.create(items: $0) })
         .disposed(by: disposeBag)
 

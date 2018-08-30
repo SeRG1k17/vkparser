@@ -12,7 +12,8 @@ import SwiftyVK
 class VKApiDelegate: SwiftyVKDelegate {
 
     private struct Constant {
-        static let appId = "6637741"
+
+        static let appId = "[application ID]" //https://vk.com/editapp?act=create
         // swiftlint:disable line_length
         static let scopes: Scopes = [.messages, .offline, .friends, .wall, .photos, .audio, .video, .docs, .market, .email]
         // swiftlint:enable line_length

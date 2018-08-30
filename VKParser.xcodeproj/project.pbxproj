@@ -55,7 +55,6 @@
 		BF3EFA7C2137EB3F00705A08 /* RxDataSources.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480ED20F8887F0034390F /* RxDataSources.framework */; };
 		BF3EFA7D2137EB3F00705A08 /* RxRealm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480E920F8887F0034390F /* RxRealm.framework */; };
 		BF3EFA7E2137EB3F00705A08 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480EF20F8887F0034390F /* RxSwift.framework */; };
-		BF3EFA7F2137EB3F00705A08 /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A53480F520F8887F0034390F /* RxTest.framework */; };
 		BF3EFA802137EB3F00705A08 /* SwiftyVK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5B241AC2100EC80001E86C4 /* SwiftyVK.framework */; };
 		BF3EFA822137EB3F00705A08 /* IQKeyboardManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF3EFA812137EB3F00705A08 /* IQKeyboardManager.framework */; };
 		BF4B1F7F21342A4B007DEE7D /* EditPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4B1F7E21342A4B007DEE7D /* EditPostViewModel.swift */; };
@@ -168,7 +167,6 @@
 				BF3EFA7C2137EB3F00705A08 /* RxDataSources.framework in Frameworks */,
 				BF3EFA7D2137EB3F00705A08 /* RxRealm.framework in Frameworks */,
 				BF3EFA7E2137EB3F00705A08 /* RxSwift.framework in Frameworks */,
-				BF3EFA7F2137EB3F00705A08 /* RxTest.framework in Frameworks */,
 				BF3EFA802137EB3F00705A08 /* SwiftyVK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,8 +243,8 @@
 		A53480CC20F87C6D0034390F /* VKParser */ = {
 			isa = PBXGroup;
 			children = (
-				BF71F765212836C4005D8185 /* Configurators */,
 				A53480CD20F87C6D0034390F /* AppDelegate.swift */,
+				BF71F765212836C4005D8185 /* Configurators */,
 				A51B09BB20F8A32300D3F39E /* Models */,
 				BFBBE58B2129D54700377855 /* Clients */,
 				A51B09B520F8A19600D3F39E /* Services */,
